@@ -1,10 +1,10 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import App from './m2/App.jsx'
-import ParentComponent from './m4/loginForm.jsx'
+import Pages from './m4/pages/page'
+
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <ParentComponent />
+    <Pages />
   </StrictMode>,
 )
