@@ -1,10 +1,12 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import Pages from './m4/pages/page'
+
+import { Counter } from './m8/number'
+import { UseCounter } from './m8/gambar1'
 
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <Pages />
+    <UseCounter />
   </StrictMode>,
 )
