@@ -6,6 +6,6 @@ import { Skaye } from './m10/gambar1'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <Skaye/>
+    <PrintMessages/>
   </StrictMode>,
 )
