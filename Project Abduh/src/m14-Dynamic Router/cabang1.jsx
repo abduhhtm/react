@@ -7,29 +7,33 @@ import {
   useParams,
 } from "react-router-dom";
 export default function BookList() {
-  const [books, setBooks] = useState([]); // State untuk menyimpan data buku
-  const [loading, setLoading] = useState(true); // State untuk loading
-  const [error, setError] = useState(null); // State untuk error handling
-  useEffect(() => { 
+  const [books, setBooks] = useState([]); 
+  const [loading, setLoading] = useState(true); 
+  const [error, setError] = useState(null); 
+
+  useEffect(() => {
     // Fetch data dari API
     axios
       .get("https://www.googleapis.com/books/v1/volumes?q=react")
       .then((response) => {
-        setBooks(response.data.items || []); // Pastikan data dari API ada
-        setLoading(false); // Set loading selesai
+        setBooks(response.data.items || []); 
+        setLoading(false); 
       })
       .catch((err) => {
         console.error(err);
         setError("Gagal memuat data buku. Coba lagi nanti.");
         setLoading(false);
       });
-  }, []); // Dependency array kosong agar hanya fetch sekali
+  }, []); 
+
   if (loading) {
-    return <p>Loading data buku...</p>; // Tampilkan loading saat data belum tersedia
+    return <p>Loading data buku...</p>; 
   }
+
   if (error) {
-    return <p>{error}</p>; // Tampilkan pesan error jika terjadi kesalahan
+    return <p>{error}</p>; 
   }
+
   return (
     <div>
       <h1>Daftar Buku</h1>
@@ -40,6 +44,7 @@ export default function BookList() {
           const thumbnail =
             imageLinks?.thumbnail ||
             "https://via.placeholder.com/128x193?text=No+Image";
+
           return (
             <div key={id}>
               <img src={thumbnail} alt={title} />
@@ -56,35 +61,40 @@ export default function BookList() {
     </div>
   );
 }
+
 export function BookDetail() {
-  const { id } = useParams(); // Ambil ID buku dari URL
-  const [book, setBook] = useState(null); // State untuk menyimpan data buku
-  const [loading, setLoading] = useState(true); // State untuk loading
-  const [error, setError] = useState(null); // State untuk error handling
+  const { id } = useParams(); 
+  const [book, setBook] = useState(null); 
+  const [loading, setLoading] = useState(true); 
+  const [error, setError] = useState(null); 
+
   useEffect(() => {
     axios
       .get(`https://www.googleapis.com/books/v1/volumes/${id}`)
       .then((response) => {
-        setBook(response.data); // Simpan data buku
-        setLoading(false); // Set loading selesai
+        setBook(response.data); 
+        setLoading(false); 
       })
       .catch((err) => {
         console.error(err);
         setError("Gagal memuat detail buku. Coba lagi nanti.");
         setLoading(false);
       });
-  }, [id]); // Jalankan ulang setiap kali ID berubah
+  }, [id]); 
   if (loading) {
     return <p>Loading detail buku...</p>;
   }
+
   if (error) {
     return <p>{error}</p>;
   }
+
   const { volumeInfo } = book;
   const { title, authors, publishedDate, description, imageLinks } = volumeInfo;
   const thumbnail =
     imageLinks?.thumbnail ||
     "https://via.placeholder.com/128x193?text=No+Image";
+
   return (
     <div>
       <h1>{title}</h1>
