@@ -19,3 +19,5 @@ export default function UseOnlineStatus(key) {
   }, []);
   return state;
 }
+
+// custom hooks adalah suatu logika yang isinya itu yang kita mau
