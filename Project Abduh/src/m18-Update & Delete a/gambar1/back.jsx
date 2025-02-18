@@ -144,7 +144,6 @@ export function ProductDetail() {
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
       {" "}
       <div className="p-8 flex flex-col lg:flex-row items-center lg:items-start lg:gap-8 bg-gray-50 rounded-lg shadow-md max-w-5xl mx-auto">
-        {/* Product Image */}
         <div className="w-full lg:w-1/3">
           <img
             src={product.image}
