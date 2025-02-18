@@ -7,9 +7,9 @@ import { Navigate } from "react-router-dom";
 import Help from "./help";
 import Create from "./createacc";
 import ProtectedRoute from "./jwtprotect";
-import Update from "./updateacc";
+import Update from "../updateacc";
 import Deleteacc from "./delete";
-import UserList from "./users";
+import UserList from "../users";
 
 const router = createBrowserRouter([
   {

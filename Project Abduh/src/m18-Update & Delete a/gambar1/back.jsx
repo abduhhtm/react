@@ -120,7 +120,7 @@ function ShoppingCard({
 
 export function ProductDetail() {
   const { id } = useParams();
-  const navigate = useNavigate(); // Pastikan ini diimpor dengan benar
+  const navigate = useNavigate(); 
   const [product, setProduct] = useState(null);
 
   useEffect(() => {
@@ -143,7 +143,6 @@ export function ProductDetail() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
       {" "}
-      {/* Menambahkan flex untuk memusatkan dan min-h-screen untuk memastikan tinggi layar penuh */}
       <div className="p-8 flex flex-col lg:flex-row items-center lg:items-start lg:gap-8 bg-gray-50 rounded-lg shadow-md max-w-5xl mx-auto">
         {/* Product Image */}
         <div className="w-full lg:w-1/3">
@@ -154,7 +153,6 @@ export function ProductDetail() {
           />
         </div>
 
-        {/* Product Info */}
         <div className="w-full lg:w-2/3">
           <h1 className="text-2xl font-bold mb-2">{product.title}</h1>
           <p className="text-gray-700 text-lg mb-4">Rp. {product.price}</p>
@@ -162,7 +160,6 @@ export function ProductDetail() {
           <p className="text-gray-500 mb-4">Category: {product.category}</p>
           <p className="text-gray-500 mb-6">Rating: 4.5/5 (146 reviews)</p>
 
-          {/* Size Selector */}
           <div className="mb-6">
             <p className="text-gray-700 font-medium mb-2">Select Size:</p>
             <div className="flex gap-2">
@@ -177,10 +174,9 @@ export function ProductDetail() {
             </div>
           </div>
 
-          {/* Actions */}
           <div className="flex gap-4">
             <button
-              onClick={() => navigate("/product")} // Gunakan navigate dengan benar
+              onClick={() => navigate("/product")} 
               className="px-6 py-2 bg-gray-200 text-gray-700 rounded-lg shadow hover:bg-gray-300"
             >
               Back to Home
@@ -190,7 +186,6 @@ export function ProductDetail() {
             </button>
           </div>
 
-          {/* Footer */}
           <p className="text-gray-500 mt-6 text-sm">
             Free shipping on all continental US orders.
           </p>

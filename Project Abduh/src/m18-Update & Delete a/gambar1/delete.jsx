@@ -5,13 +5,11 @@ import { Link, useNavigate } from "react-router-dom";
 export default function DeleteAcc() {
   const [id, setId] = useState("");
   const [message, setMessage] = useState("");
-  const navigate = useNavigate(); // Untuk tombol kembali
+  const navigate = useNavigate(); 
 
-  // Fungsi untuk menghapus data pengguna
   const handleDeleteUser = (e) => {
     e.preventDefault();
 
-    // Mengirim permintaan DELETE ke API
     axios
       .delete(`https://api.escuelajs.co/api/v1/users/${id}`)
       .then(() => setMessage(`✅ User deleted successfully`))

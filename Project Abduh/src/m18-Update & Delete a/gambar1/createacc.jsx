@@ -3,19 +3,16 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 
 export default function Create() {
-  // State untuk form data
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     password: "",
-    role: "customer", // default role
-    avatar: "https://i.imgur.com/LDOO4Qs.jpg", // default avatar
+    role: "customer",
+    avatar: "https://i.imgur.com/LDOO4Qs.jpg", 
   });
 
-  // State untuk pesan hasil request
   const [message, setMessage] = useState("");
 
-  // Fungsi untuk mengubah input form
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -23,14 +20,13 @@ export default function Create() {
     });
   };
 
-  // Fungsi untuk mengirim data ke API
   const handleCreateUser = (e) => {
     e.preventDefault();
 
     const newUser = {
       ...formData,
-      creationAt: new Date().toISOString(), // Tambah waktu pembuatan
-      updatedAt: new Date().toISOString(), // Tambah waktu perubahan
+      creationAt: new Date().toISOString(), 
+      updatedAt: new Date().toISOString(), 
     };
 
     axios
@@ -102,7 +98,6 @@ export default function Create() {
           </button>
         </form>
 
-        {/* Message Display */}
         {message && (
           <p className="text-center mt-4 text-sm font-semibold">{message}</p>
         )}

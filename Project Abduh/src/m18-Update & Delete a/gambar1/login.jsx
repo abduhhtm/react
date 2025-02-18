@@ -17,10 +17,9 @@ export const LoginMas = () => {
         password,
       })
       .then((response) => {
-        // Simpan token ke localStorage jika login berhasil
+       
         localStorage.setItem("authToken", response.data.access_token);
 
-        // Redirect ke halaman produk
         navigate("/product");
       })
       .catch((error) => {
@@ -78,7 +77,7 @@ export const LoginMas = () => {
           </button>
           <div className="text-center mt-6">
             <p className="text-sm text-gray-600">
-              Belum punya akun?{" "}
+             Tidak Ada akun?{" "}
               <Link to="/help">
                 <a className="text-blue-500 hover:underline">Buat akun</a>
               </Link>
