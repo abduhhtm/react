@@ -7,31 +7,31 @@ import {
   useParams,
 } from "react-router-dom";
 export default function BookList() {
-  const [books, setBooks] = useState([]); 
-  const [loading, setLoading] = useState(true); 
-  const [error, setError] = useState(null); 
+  const [books, setBooks] = useState([]); // State untuk menyimpan data buku
+  const [loading, setLoading] = useState(true); // State untuk loading
+  const [error, setError] = useState(null); // State untuk error handling
 
   useEffect(() => {
     // Fetch data dari API
     axios
       .get("https://www.googleapis.com/books/v1/volumes?q=react")
       .then((response) => {
-        setBooks(response.data.items || []); 
-        setLoading(false); 
+        setBooks(response.data.items || []); // Pastikan data dari API ada
+        setLoading(false); // Set loading selesai
       })
       .catch((err) => {
         console.error(err);
         setError("Gagal memuat data buku. Coba lagi nanti.");
         setLoading(false);
       });
-  }, []); 
+  }, []); // Dependency array kosong agar hanya fetch sekali
 
   if (loading) {
-    return <p>Loading data buku...</p>; 
+    return <p>Loading data buku...</p>; // Tampilkan loading saat data belum tersedia
   }
 
   if (error) {
-    return <p>{error}</p>; 
+    return <p>{error}</p>; // Tampilkan pesan error jika terjadi kesalahan
   }
 
   return (
@@ -63,24 +63,25 @@ export default function BookList() {
 }
 
 export function BookDetail() {
-  const { id } = useParams(); 
-  const [book, setBook] = useState(null); 
-  const [loading, setLoading] = useState(true); 
-  const [error, setError] = useState(null); 
+  const { id } = useParams(); // Ambil ID buku dari URL
+  const [book, setBook] = useState(null); // State untuk menyimpan data buku
+  const [loading, setLoading] = useState(true); // State untuk loading
+  const [error, setError] = useState(null); // State untuk error handling
 
   useEffect(() => {
     axios
       .get(`https://www.googleapis.com/books/v1/volumes/${id}`)
       .then((response) => {
-        setBook(response.data); 
-        setLoading(false); 
+        setBook(response.data); // Simpan data buku
+        setLoading(false); // Set loading selesai
       })
       .catch((err) => {
         console.error(err);
         setError("Gagal memuat detail buku. Coba lagi nanti.");
         setLoading(false);
       });
-  }, [id]); 
+  }, [id]); // Jalankan ulang setiap kali ID berubah
+
   if (loading) {
     return <p>Loading detail buku...</p>;
   }
